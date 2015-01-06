@@ -7,7 +7,7 @@ var bio = {
           mobile: '+(506) 6051 1105',
           email: 'isma@ismapro.com',
           github: 'ismaproco',
-          twitter: 'ismapro',
+          twitter: '@ismapro',
           location: 'Costa Rica'
           }],
     welcomeMessage: 'This is my Application Development Portfolio',
@@ -89,21 +89,44 @@ var projects = {
 }
 
 
-/* Show jsons in the page spaces */
+/*
+	HEADER SECTIONS
+*/
 
-
-/* Replace the %data% elements of each section */
+/* header title */
 $("#header").prepend( HTMLheaderName.replace("%data%", bio.name) + 
 						HTMLheaderRole.replace("%data%", bio.role) );
 
-
+/* header contacts */
 bio.contacts.map(function(value){
 	Object.keys(value).map(function(key){
 		$('#topContacts').append( HTMLcontactGeneric.replace( '%contact%',key )
-						.replace('%data%',value[key] ) );
+						.replace( '%data%' , value[key] ) );
 	});
 })
 
-$('#header').prepend( HTMLbioPic.replace( '%data%', bio.biopic ) );
+/* header image and welcome message */
+$('#header').append( HTMLbioPic.replace( '%data%', bio.biopic ) );
 $('#header').append( HTMLWelcomeMsg.replace( '%data%', bio.welcomeMessage ) );
 
+/* header Skill section */
+$('#header').append( HTMLskillsStart );	
+
+bio.skills.map( function( skill ){
+	$('#skills').append( HTMLskills.replace( '%data%', skill ) );
+});
+
+/*
+	WORK EXPERIENCE SECTION
+*/
+
+
+
+
+/*
+	PROJECTS SECTION
+*/
+
+/*
+	EDUCATION SECTION
+*/
