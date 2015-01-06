@@ -12,7 +12,7 @@ var bio = {
           }],
     welcomeMessage: 'This is my Application Development Portfolio',
     skills: ['C#','Javascript','jQuery', 'Ajax', 'SharePoint'],
-    biopic: 'http:\/\/0.gravatar.com\/avatar\/7d3897f5713a28822379455a744a95b5',
+    biopic: 'https://avatars1.githubusercontent.com/u/180197?v=3&s=460',
     display: function() {
 
     }
@@ -120,13 +120,37 @@ bio.skills.map( function( skill ){
 	WORK EXPERIENCE SECTION
 */
 
+work.jobs.map( function( job ) {
 
-
+	var work = $(HTMLworkStart);
+	work.append( HTMLworkEmployer.replace( '%data%', job.employer )  +
+				 HTMLworkTitle.replace( '%data%', job.title ) 	);
+	work.append( HTMLworkDates.replace( '%data%', job.dates ) );
+	work.append( HTMLworkLocation.replace( '%data%', job.location ) );
+	work.append( HTMLworkDescription.replace( '%data%', job.description ) );
+	$('#workExperience').append(work);
+});
 
 /*
 	PROJECTS SECTION
 */
 
+projects.projects.map( function( project ) {
+
+	var entry = $( HTMLprojectStart );
+	entry.append( HTMLprojectTitle.replace( '%data%' , project.title ) );
+	entry.append( HTMLprojectDates.replace( '%data%' , project.dates ) );
+	entry.append( HTMLprojectDescription.replace( '%data%' , project.description ) );
+
+	project.images.map( function( img ) {
+		entry.append( HTMLprojectImage.replace( '%data%' , img ) );		
+	});
+
+	$('#projects').append( entry );
+});
+
+
 /*
 	EDUCATION SECTION
 */
+
